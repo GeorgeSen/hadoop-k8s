@@ -25,19 +25,7 @@ spec:
           - containerPort: 31822
         securityContext:
           privileged: true
-        volumeMounts:
-          - name: hdfs
-            mountPath: /custom/hdfs_dir
         env:
           - name: image_function
             value: "namenode|resourcemanager"
-  volumeClaimTemplates:
-  - metadata:
-      name: hdfs
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      volumeMode: Filesystem
-      resources:
-        requests:
-          storage: 1Gi
-      storageClassName: csi-lvm
+
