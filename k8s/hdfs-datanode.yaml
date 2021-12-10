@@ -29,9 +29,6 @@ spec:
           limits:
             memory: "2048Mi"
             cpu: "1000m"
-        volumeMounts:
-          - name: hdfs
-            mountPath: /custom/hdfs_dir
         securityContext:
           privileged: true
         env:
@@ -41,13 +38,4 @@ spec:
             value: "hdfs://hdfs-namenode:9000"
           - name: hadoop_yarn_yarn_resourcemanager_hostname
             value: "hdfs-namenode"
-  volumeClaimTemplates:
-  - metadata:
-      name: hdfs
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      volumeMode: Filesystem
-      resources:
-        requests:
-          storage: 4Gi
-      storageClassName: csi-lvm
+
